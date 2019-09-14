@@ -1,0 +1,128 @@
+# cst constraint descriptor for meh docking
+# 02/05/2017 cst O of X00 to 299Y,374Y. N of X00 to 226D. 404E to 431H. 
+# (don't cst 431H --226D because maybe water between them)
+# Yue Zhang, Siegel Lab UCD, yuezh@ucdavis.edu 
+
+
+#####CHEMISTRY CONSTRAINTS
+
+
+#1 - constrain X00—299Y  
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: O1 C10 C9
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OH CZ CE2
+  TEMPLATE::   ATOM_MAP: 2 residue1:  Y
+
+  CONSTRAINT:: distanceAB:    2.5  0.5    500  0    
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+  CONSTRAINT:: torsion_AB:  160.5 10.0    100  360. 
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
+
+
+#2 - constrain X00—374Y  
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: O1 C10 C9
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OH CZ CE2
+  TEMPLATE::   ATOM_MAP: 2 residue1:  Y
+
+  CONSTRAINT:: distanceAB:    2.5  0.5    500  0    
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
+
+
+#3 - constrain X00—226D  
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: N1 C10 C9
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OD2 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue1:  D
+
+  CONSTRAINT:: distanceAB:    2.5  0.5    500  0    
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
+
+
+
+#####TRIAD CONSTRAINTS
+
+
+#4 - constrain 404E-431H  
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: OE1 CD CG
+  TEMPLATE::   ATOM_MAP: 1 residue1:  E
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: ND1 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue1:  H
+
+  CONSTRAINT:: distanceAB:    2.5  0.5    500  0    
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
+
+#5 - constrain 374Y-299Y  
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: OH CZ CE2
+  TEMPLATE::   ATOM_MAP: 1 residue1:  Y
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OH CZ CE1
+  TEMPLATE::   ATOM_MAP: 2 residue1:  Y
+
+  CONSTRAINT:: distanceAB:    4.9  0.5    50  0    
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
+
+
+#6 - constrain 299Y-226D  
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: OH CZ CE2
+  TEMPLATE::   ATOM_MAP: 1 residue1:  Y
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: CG CB CA
+  TEMPLATE::   ATOM_MAP: 2 residue1:  D
+
+  CONSTRAINT:: distanceAB:    7.6  0.5    50  0    
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
+
+#7 - constrain 374Y-226D  
+CST::BEGIN
+ TEMPLATE::   ATOM_MAP: 1 atom_name: OH CZ CE2
+ TEMPLATE::   ATOM_MAP: 1 residue1:  Y
+
+ TEMPLATE::   ATOM_MAP: 2 atom_name: CG CB CA
+ TEMPLATE::   ATOM_MAP: 2 residue1:  D
+
+  CONSTRAINT:: distanceAB:    5.7  0.5    50  0    
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
