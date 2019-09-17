@@ -1,0 +1,254 @@
+# cst constraint descriptor for bjks docking  07-10-2018
+# Yue Zhang yuezh@ucdavis.edu
+# NOTE
+
+
+# CHEMISTRY CONSTRAINTS
+
+
+#1 - constrain X00_dpp and Y00_intmA1 C14-03 
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: C20 C19 C17
+  TEMPLATE::   ATOM_MAP: 1 residue3:  Y00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: O3 P2 O6
+  TEMPLATE::   ATOM_MAP: 2 residue3:  X00
+
+  CONSTRAINT:: distanceAB:    3.0  0.5    500  1    3
+# CONSTRAINT::    angle_A:  115.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:  110.0 20.0    50   360. 2
+# CONSTRAINT::  torsion_A:  180.0 50.0    50   360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+CST::END
+
+
+
+# COORDINATION CONSTRAINTS
+
+
+
+#2 - D73_OD2 to MG3
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: MG3 O5 P1
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+	
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OD2 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue1:  D
+	
+  CONSTRAINT:: distanceAB:    2.5   0.3    500 0    3
+# CONSTRAINT::    angle_A:   65.8   6.5    50  360. 2
+  CONSTRAINT::    angle_B:  145.3  20.0    50  360. 2
+# CONSTRAINT::  torsion_A:   83.6  10.0    50  360. 2
+  CONSTRAINT:: torsion_AB:  128.7  20.0    50  360. 2
+# CONSTRAINT::  torsion_B:  141.0  15.0    50  360. 2
+CST::END
+	
+	
+#3 - D73_OD1 to MG2
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: MG2 O7 P2
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OD1 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue1:  D
+	
+  CONSTRAINT:: distanceAB:    2.5   0.5    500 0    3
+# CONSTRAINT::    angle_A:   87.2  10.0    50  360. 2
+  CONSTRAINT::    angle_B:  129.3  20.0    50  360. 2
+# CONSTRAINT::  torsion_A:  290.3  30.0    50  360. 2
+  CONSTRAINT:: torsion_AB:  290.3  20.0    50  360. 2
+# CONSTRAINT::  torsion_B:  206.6  20.0    50  360. 2
+CST::END
+
+#4 - D77 to MG3
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: MG3 O5 P1
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OD2 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue1:  D
+
+  CONSTRAINT:: distanceAB:    2.5   0.3    500 0    3
+# CONSTRAINT::    angle_A:   85.6  10.0    50  360. 2
+  CONSTRAINT::    angle_B:  107.2  20.0    50  360. 2
+# CONSTRAINT::  torsion_A:  149.6  15.0    50  360. 2
+  CONSTRAINT:: torsion_AB:  155.1  20.0    50  360. 2
+# CONSTRAINT::  torsion_B:  207.8  25.0    50  360. 2
+CST::END
+
+
+#5 - D77 to MG2
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: MG2 O7 P2
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OD2 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue1:  D
+
+  CONSTRAINT:: distanceAB:    2.5   0.3    500 0    3
+# CONSTRAINT::    angle_A:   85.5  10.0    50  360. 2
+  CONSTRAINT::    angle_B:  129.4  20.0    50  360. 2
+# CONSTRAINT::  torsion_A:  202.2  20.0    50  360. 2
+  CONSTRAINT:: torsion_AB:  220.6  20.0    50  360. 2
+# CONSTRAINT::  torsion_B:  351.3  35.0    50  360. 2
+CST::END
+
+
+#6 - N205 to MG1  
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: MG1 O6 P2
+  TEMPLATE::   ATOM_MAP: 1 residue3:  X00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: ND2 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue1:  N
+
+  CONSTRAINT:: distanceAB:    2.5   0.5   500 0    3
+# CONSTRAINT::    angle_A:   87.4  10.0   50  360. 2
+  CONSTRAINT::    angle_B:  147.3  20.0   50  360. 2
+# CONSTRAINT::  torsion_A:  247.0  25.0   50  360. 2
+  CONSTRAINT:: torsion_AB:   95.4  20.0   50  360. 2
+# CONSTRAINT::  torsion_B:  171.3  20.0   50  360. 2
+CST::END
+
+
+
+# water constraint
+
+
+#7 - Water to 26E OE1
+
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: O H1 H2
+  TEMPLATE::   ATOM_MAP: 1 residue3: Z00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OE1 CD CG
+  TEMPLATE::   ATOM_MAP: 2 residue3:  GLU
+
+  CONSTRAINT:: distanceAB:    2.8  0.5    50   1    3
+# CONSTRAINT::    angle_A:  180.0 30.0    50   360. 2
+  CONSTRAINT::    angle_B:  103.8 10.0    30   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+  CONSTRAINT::  torsion_B:  191.8 19.0    30   360. 2
+CST::END
+
+
+
+#8 - Water to 74D OD2
+
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: O H1 H2
+  TEMPLATE::   ATOM_MAP: 1 residue3: Z00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OD2 CG CB
+  TEMPLATE::   ATOM_MAP: 2 residue3:  ASP
+
+  CONSTRAINT:: distanceAB:    3.3  0.5    50   1    3
+# CONSTRAINT::    angle_A:  180.0 30.0    0    360. 2
+  CONSTRAINT::    angle_B:  100.7 10.0    30   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+  CONSTRAINT::  torsion_B:  230.6 23.0    30   360. 2
+CST::END
+
+
+
+
+# angle constraint
+
+
+
+
+#9 - constrain ligand to A165S angle_alpha
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: H33 C9 C10
+  TEMPLATE::   ATOM_MAP: 1 residue3:  Y00
+	
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OG CB CA
+  TEMPLATE::   ATOM_MAP: 2 residue1:  S
+	
+# CONSTRAINT:: distanceAB:    2.5   0.3    500 0    3
+# CONSTRAINT::    angle_A:   65.8   6.5    50  360. 2
+  CONSTRAINT::    angle_B:  120.0  12.0    500 360. 2
+# CONSTRAINT::  torsion_A:   83.6  10.0    50  360. 2
+# CONSTRAINT:: torsion_AB:  128.7  20.0    50  360. 2
+# CONSTRAINT::  torsion_B:  141.0  15.0    50  360. 2
+CST::END
+
+#10 - constrain ligand to A165S angle_beta
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: H33 C9 C10
+  TEMPLATE::   ATOM_MAP: 1 residue3:  Y00
+	
+  TEMPLATE::   ATOM_MAP: 2 atom_name: OG CB CA
+  TEMPLATE::   ATOM_MAP: 2 residue1:  S
+	
+# CONSTRAINT:: distanceAB:    2.5   0.3    500 0    3
+  CONSTRAINT::    angle_A:  180.0  18.0    100 360. 2
+# CONSTRAINT::    angle_B:  120.0  12.0    500 360. 2
+# CONSTRAINT::  torsion_A:   83.6  10.0    50  360. 2
+# CONSTRAINT:: torsion_AB:  128.7  20.0    50  360. 2
+# CONSTRAINT::  torsion_B:  141.0  15.0    50  360. 2
+CST::END
+
+
+
+
+
+
+
+
+# trash
+
+
+
+#2 - constrain X00_dpp and Y00intm_A1  C17-O3 USUALLY GO IN CYCLE AVOID ERROR
+#CST::BEGIN
+#  TEMPLATE::   ATOM_MAP: 1 atom_name: C18 C17 C14 
+#  TEMPLATE::   ATOM_MAP: 1 residue3:  Y00
+#
+#  TEMPLATE::   ATOM_MAP: 2 atom_name: O3 P2 O6
+#  TEMPLATE::   ATOM_MAP: 2 residue3:  X00
+
+#  CONSTRAINT:: distanceAB:    3.0  0.5    500  1    3
+# CONSTRAINT::    angle_A:  180.0 20.0    50   360. 2
+# CONSTRAINT::    angle_B:   90.0 70.0    50   360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0 40.0    50   180. 2
+#CST::END
+
+# - Water to 26E OE2
+
+#CST::BEGIN
+#  TEMPLATE::   ATOM_MAP: 1 atom_name: O H1 H2
+#  TEMPLATE::   ATOM_MAP: 1 residue3: Z00
+#
+#  TEMPLATE::   ATOM_MAP: 2 atom_name: OE2 CD CG
+#  TEMPLATE::   ATOM_MAP: 2 residue3:  GLU
+#
+# CONSTRAINT:: distanceAB:    3.1  0.5    500  1    3
+# CONSTRAINT::    angle_A:  180.0 30.0    50   360. 2
+# CONSTRAINT::    angle_B:  110.0 20.0    500  360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0  0.0    0    360. 2
+#CST::END
+
+# - Water to 279R NH1
+
+#CST::BEGIN
+#  TEMPLATE::   ATOM_MAP: 1 atom_name: O H1 H2
+#  TEMPLATE::   ATOM_MAP: 1 residue3: Z00
+
+#  TEMPLATE::   ATOM_MAP: 2 atom_name: NH1 CZ NE
+#  TEMPLATE::   ATOM_MAP: 2 residue3:  ARG
+
+# CONSTRAINT:: distanceAB:    3.1  0.5    500  1    3
+# CONSTRAINT::    angle_A:  180.0 30.0    50   360. 2
+# CONSTRAINT::    angle_B:  110.0 20.0    500  360. 2
+# CONSTRAINT::  torsion_A:    0.0  0.0    0    360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:    0.0  0.0    0    360. 2
+#CST::END
