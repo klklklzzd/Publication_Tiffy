@@ -1,0 +1,73 @@
+# cst constraint descriptor for germacrene conformer docking 
+# T.E.O'Brien,  Siegel Lab UCD, teobrien@ucdavis.edu  
+#constraints AAA
+
+# NOTE
+
+
+#1 - constraint for proton donation from D270 to alkene
+
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: C7 C6 C13
+  TEMPLATE::   ATOM_MAP: 1 residue3: Y00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_type: OOC
+  TEMPLATE::   ATOM_MAP: 2 residue3: ASP 
+
+  CONSTRAINT:: distanceAB:    2.5  0.5    200  1    3
+  CONSTRAINT::    angle_A:   90.0 10.0    300  360. 2
+  CONSTRAINT::    angle_B:  109.0 10.0    100  360. 2
+# CONSTRAINT::  torsion_A:  180.0 20.0    500  360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+  CONSTRAINT::  torsion_B:    0.0 20.0    100  180. 2
+CST::END
+
+#2 - first constraint for making PPi-C bond, but only while using Halogonated version
+
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: F1 C20 C18
+  TEMPLATE::   ATOM_MAP: 1 residue3: Y00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: O7 P2 O3
+  TEMPLATE::   ATOM_MAP: 2 residue3: X00
+
+  CONSTRAINT:: distanceAB:    0.0  0.1    500  1    3
+# CONSTRAINT::    angle_A:   90.0 10.0    300  360. 2
+# CONSTRAINT::    angle_B:  109.0 10.0    100  360. 2
+# CONSTRAINT::  torsion_A:  180.0 20.0    500  360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:  180.0 10.0    100  360. 2
+CST::END
+
+#3 second constraint for making PPi-C bond 
+
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: C20 C18 C17
+  TEMPLATE::   ATOM_MAP: 1 residue3: Y00
+
+  TEMPLATE::   ATOM_MAP: 2 atom_name: O7 P2 O3
+  TEMPLATE::   ATOM_MAP: 2 residue3: X00
+
+  CONSTRAINT:: distanceAB:    1.45 0.1    200  1    3
+  CONSTRAINT::    angle_A:  109.0  5.0    300  360. 2
+  CONSTRAINT::    angle_B:  109.0  5.0    100  360. 2
+# CONSTRAINT::  torsion_A:  180.0 20.0    500  360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:  180.0 10.0    100  360. 2
+CST::END
+
+#4 - H314 h-bond constraint that is activating D270
+CST::BEGIN
+  TEMPLATE::   ATOM_MAP: 1 atom_name: ND1 CG CB
+  TEMPLATE::   ATOM_MAP: 1 residue3: HIS
+
+  TEMPLATE::   ATOM_MAP: 2 atom_type: OOC
+  TEMPLATE::   ATOM_MAP: 2 residue3: ASP
+
+  CONSTRAINT:: distanceAB:    2.4  0.3    500  0    3
+  CONSTRAINT::    angle_A:  146.8 10.0    100  360. 2
+  CONSTRAINT::    angle_B:  125.3 10.0    100  360. 2
+# CONSTRAINT::  torsion_A:  180.0 20.0    500  360. 2
+# CONSTRAINT:: torsion_AB:    0.0  0.0    0    360. 2
+# CONSTRAINT::  torsion_B:  180.0 10.0    100  360. 2
+CST::END

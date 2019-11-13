@@ -1,0 +1,53 @@
+<ROSETTASCRIPTS>
+      <SCOREFXNS>
+                <ScoreFunction name="myscore" weights="ref2015.wts"/> 
+      </SCOREFXNS>
+      <SCORINGGRIDS ligand_chain="A" width="20.0">
+		<ClassicGrid grid_name="dock_grid" weight="1.0"/>
+      </SCORINGGRIDS>
+      <TASKOPERATIONS>
+                <DetectProteinLigandInterface name="interface_detect" design="0" cut1="8.0" cut2="10.0" cut3="11.0" cut4="12.0"/>
+                <LimitAromaChi2 name="limchi2"/>
+                <SetCatalyticResPackBehavior name="catres" fix_catalytic_aa="0"/>
+		PreventResiduesFromRepacking name="lig" residues="534,535,536,537,538,539"/>
+      </TASKOPERATIONS>
+      <FILTERS>
+                <EnzScore name="allcst" score_type="cstE" scorefxn="myscore" whole_pose="1" energy_cutoff="2000"/> 
+               <DSasa name="lig_sasa" lower_threshold="0.0" upper_threshold="1.0" />
+        </FILTERS>
+      <MOVERS>
+              <AddOrRemoveMatchCsts name="cstadd" cst_instruction="add_new"/> 
+
+             <StartFrom name="start_from" chain="B">
+             	<Coordinates x="15.53" y="19.17" z="-65.36"/>
+             </StartFrom>
+
+	     <Transform name="predock_carbon" chain="B" box_size="20" move_distance="10" angle="360" cycles="1000" repeats="3" temperature="5"/>
+             <Transform name="predock_ppi" chain="C" box_size="10" move_distance="4" angle="360" cycles="1000" repeats="3" temperature="5"/>
+             <EnzRepackMinimize name="repack_wbb" design="0" repack_only="1" scorefxn_minimize="myscore" scorefxn_repack="myscore" minimize_rb="1" rb_min_jumps="1,2"  minimize_sc="1" minimize_bb="1" cycles="1" minimize_lig="1" min_in_stages="0" backrub="0" task_operations="interface_detect,limchi2,catres"/>
+             <EnzRepackMinimize name="cstopt" cst_opt="1" minimize_rb="1" minimize_sc="1" minimize_bb="0" cycles="1" min_in_stages="0" minimize_lig="1" rb_min_jumps="1,2"/>
+
+
+             <ParsedProtocol name="dock_pak">
+                <Add mover="predock_carbon"/>
+                <Add mover="cstopt"/>
+                <Add mover="repack_wbb"/>
+             </ParsedProtocol>
+
+             <GenericMonteCarlo name="interative_dp" mover_name="dock_pak" scorefxn_name="myscore" trials="3" sample_type="low" temperature="0.6" drift="1"/>
+
+             <EnzRepackMinimize name="repack_wbb_wppi" design="0" repack_only="1" scorefxn_minimize="myscore" scorefxn_repack="myscore" minimize_rb="1" rb_min_jumps="1,2"  minimize_sc="1" minimize_bb="1" cycles="2" minimize_lig="1" min_in_stages="0" backrub="0" task_operations="interface_detect,limchi2,catres"/>
+
+
+
+      </MOVERS>
+      <PROTOCOLS>
+              <Add mover_name="cstadd"/>
+              <Add mover="start_from"/>
+	      <Add mover="predock_ppi"/>
+              <Add mover="interative_dp"/>
+              <Add mover="repack_wbb_wppi"/>
+	      <Add filter_name="allcst"/>
+              <Add filter_name="lig_sasa"/>
+      </PROTOCOLS>
+</ROSETTASCRIPTS>
