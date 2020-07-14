@@ -1,6 +1,6 @@
 ### Crystal structure
 
-Pdb file and mtz file are attached in “Crystal_structure” folder.
+Pdb file and mtz file are attached in “crystal_structure” folder.
 
 ### QM calculation result
 
